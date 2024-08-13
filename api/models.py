@@ -19,12 +19,12 @@ class ShotList(models.Model):
         return f"{self.shot_description} - {self.shot_type}"
 
 class ConsentForm(models.Model):
-    age = models.IntegerField(null=True, blank=True)
-    agency_logo = models.ImageField(null=True, blank=True, upload_to="images/agency_logo")
-    date = models.DateTimeField(auto_now_add=True, null=True)
-    agency_name = models.CharField(max_length=1000, null=True, blank=True)
-    photographer_name = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="consent_forms")
     subject_name = models.CharField(max_length=1000, null=True, blank=True)
+    age = models.IntegerField(null=True, blank=True)
+    photographer_name = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="consent_forms")
+    date = models.DateTimeField(auto_now_add=True, null=True)
+    # agency_logo = models.ImageField(null=True, blank=True, upload_to="images/agency_logo")
+    agency_name = models.CharField(max_length=1000, null=True, blank=True)
     subject_address = models.TextField(blank=True, null=True)
     subject_photograph = models.ImageField(upload_to="images/subject_photograph")
     subject_signature = models.ImageField(upload_to="images/signature")
@@ -39,7 +39,7 @@ class Project(models.Model):
     shot_list = models.ManyToManyField(ShotList, related_name="projects", blank=True)  # Changed to ManyToManyField
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="projects")
     project_type = models.CharField(max_length=512, blank=True, null=True)
-    consent_form = models.ForeignKey(ConsentForm, on_delete=models.CASCADE, related_name="projects", null=True, blank=True)
+    # consent_form = models.ForeignKey(ConsentForm, on_delete=models.CASCADE, related_name="projects", null=True, blank=True)
 
     def __str__(self):
         return self.project_name
