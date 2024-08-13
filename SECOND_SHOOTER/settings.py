@@ -29,7 +29,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1', 'second-shooter-backend-server.up.railway.app/']
 
 
 # Application definition
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'storages',
     'drf_spectacular',
-    'drf_spectacular_sidecar',  # required for Django collectstatic discovery
+    "whitenoise.runserver_nostatic",
 ]
 
 AUTH_USER_MODEL = "users.CustomUser"
@@ -58,6 +58,7 @@ AUTH_USER_MODEL = "users.CustomUser"
 MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -214,6 +215,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 CSRF_TRUSTED_ORIGINS = [
    "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "https://second-shooter-backend-server.up.railway.app/"
 ]
 
 
