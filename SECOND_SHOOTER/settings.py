@@ -29,7 +29,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1', 'second-shooter-backend-server.up.railway.app/']
+ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1', 'second-shooter-backend-server.up.railway.app']
 
 
 # Application definition
@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'storages',
     'drf_spectacular',
+    'drf_spectacular_sidecar',  # required for Django collectstatic discovery
+    'drf_yasg',
     "whitenoise.runserver_nostatic",
 ]
 
@@ -169,7 +171,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
@@ -207,7 +210,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CORS_ALLOWED_ORIGINS = ["http://localhost:3000",
-    "http://127.0.0.1:3000",]
+    "http://127.0.0.1:3000", "https://second-shooter-backend-server.up.railway.app"]
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -215,7 +218,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 CSRF_TRUSTED_ORIGINS = [
    "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://second-shooter-backend-server.up.railway.app/"
+    "https://second-shooter-backend-server.up.railway.app",
+    "http://second-shooter-backend-server.up.railway.app/",
 ]
 
 
