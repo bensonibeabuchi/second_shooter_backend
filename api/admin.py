@@ -4,7 +4,7 @@ from .models import *
 # Register your models here.
 
 class ShotListAdmin(admin.ModelAdmin):
-    list_display = ["shot_description", "shot_type", "is_done"]
+    list_display = ["shot_description", "user", "shot_type", "is_done"]
     list_editable = ["shot_type", "is_done"]
     list_filter = ["shot_type", "is_done"]
 
@@ -20,8 +20,8 @@ admin.site.register(ConsentForm, ConsentFormAdmin)
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ["project_name", "user", ]
-    list_filter = ["project_name"]
+    list_display = ["project_name", "user", 'updated_at' ]
+    list_filter = ["project_name", "user", 'updated_at']
     prepopulated_fields = {"slug": ("project_name",)}
     
 
