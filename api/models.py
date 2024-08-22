@@ -14,9 +14,15 @@ class ShotList(models.Model):
     shot_type = models.CharField(max_length=512, choices=SHOT_TYPE_CHOICES, blank=True, null=True)
     image_reference = models.ImageField(blank=True, null=True, upload_to="images/reference_image")
     is_done = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(null=True, blank=True, auto_now=True)
+
 
     def __str__(self):
         return f"{self.shot_description} - {self.shot_type}"
+    
+    class Meta:
+        ordering = ['updated_at']
 
 class ConsentForm(models.Model):
     subject_name = models.CharField(max_length=1000, null=True, blank=True)
@@ -28,9 +34,14 @@ class ConsentForm(models.Model):
     subject_address = models.TextField(blank=True, null=True)
     subject_photograph = models.ImageField(upload_to="images/subject_photograph", null=True, blank=True)
     subject_signature = models.ImageField(upload_to="images/signature", null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(null=True, blank=True, auto_now=True)
 
     def __str__(self):
         return f"{self.subject_name} - {self.photographer_name}"
+    
+    class Meta:
+        ordering = ['-updated_at']
 
 class Project(models.Model):
     project_name = models.CharField(max_length=512)
