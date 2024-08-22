@@ -97,30 +97,30 @@ WSGI_APPLICATION = 'SECOND_SHOOTER.wsgi.application'
 
 # Local Database, use when you want to work locally
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('POSTGRESS_USERNAME'),
-        'USER': 'postgres',
-        'PASSWORD': config('POSTGRESS_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': config('POSTGRESS_USERNAME'),
+#         'USER': 'postgres',
+#         'PASSWORD': config('POSTGRESS_PASSWORD'),
+#         'HOST': 'localhost',
+#         'PORT': '5432'
+#     }
+# }
 
 
 # Railway Database, use when you want to push to the web
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'railway',
-#         'USER': 'postgres',
-#         'PASSWORD': config('RAILWAY_PASSWORD'),
-#         'HOST': config('RAILWAY_HOST'),
-#         'PORT': config('RAILWAY_PORT'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': config('RAILWAY_PASSWORD'),
+        'HOST': config('RAILWAY_HOST'),
+        'PORT': config('RAILWAY_PORT'),
+    }
+}
 
 
 # Password validation
