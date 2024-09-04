@@ -265,9 +265,9 @@ class CustomActivationView(APIView):
             email.attach_alternative(html_message, "text/html")
             email.send()
 
-            return Response({'message': _('Account activated successfully.')}, status=status.HTTP_200_OK)
+            return Response({'message': _('Account activated successfully')}, status=status.HTTP_200_OK)
         else:
-            return Response({'error': _('Invalid OTP.')}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error': _('Invalid OTP')}, status=status.HTTP_400_BAD_REQUEST)
 
 
 
